@@ -1,0 +1,325 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8766976619BD09BF003DF05B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8766976519BD09BF003DF05B /* main.swift */; };
+		8766976819BD09BF003DF05B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8766976719BD09BF003DF05B /* AppDelegate.swift */; };
+		8766976A19BD09BF003DF05B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8766976919BD09BF003DF05B /* Images.xcassets */; };
+		8785392919D0230D0025B872 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8785392819D0230D0025B872 /* ArrayExtension.swift */; };
+		87B017A619D15A6A001D05F1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8766976B19BD09BF003DF05B /* MainMenu.xib */; };
+		87B12EE019CDD92B00294C2B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B12EDF19CDD92B00294C2B /* Project.swift */; };
+		87B12EE219CDD94400294C2B /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B12EE119CDD94400294C2B /* Package.swift */; };
+		87DDD21519CE067100B07ABF /* ProjectTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DDD21419CE067100B07ABF /* ProjectTableCellView.swift */; };
+		87DDD21919CE149800B07ABF /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DDD21819CE149800B07ABF /* ProjectView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8766976019BD09BF003DF05B /* Bower UI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bower UI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8766976419BD09BF003DF05B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Bower UI/Info.plist"; sourceTree = "<group>"; };
+		8766976519BD09BF003DF05B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = "../Bower UI/main.swift"; sourceTree = "<group>"; };
+		8766976719BD09BF003DF05B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../Bower UI/AppDelegate.swift"; sourceTree = "<group>"; };
+		8766976919BD09BF003DF05B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "../Bower UI/Images.xcassets"; sourceTree = "<group>"; };
+		8766976C19BD09BF003DF05B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		8766977719BD09BF003DF05B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8766977819BD09BF003DF05B /* BowerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowerTests.swift; sourceTree = "<group>"; };
+		8785392819D0230D0025B872 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = "../Bower UI/ArrayExtension.swift"; sourceTree = "<group>"; };
+		87B12EDF19CDD92B00294C2B /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Project.swift; path = "../Bower UI/Project.swift"; sourceTree = "<group>"; };
+		87B12EE119CDD94400294C2B /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = "../Bower UI/Package.swift"; sourceTree = "<group>"; };
+		87DDD21419CE067100B07ABF /* ProjectTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectTableCellView.swift; path = "../Bower UI/ProjectTableCellView.swift"; sourceTree = "<group>"; };
+		87DDD21819CE149800B07ABF /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectView.swift; path = "../Bower UI/ProjectView.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8766975D19BD09BF003DF05B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8766975719BD09BF003DF05B = {
+			isa = PBXGroup;
+			children = (
+				8766976219BD09BF003DF05B /* Bower UI */,
+				8766977519BD09BF003DF05B /* BowerTests */,
+				8766976119BD09BF003DF05B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8766976119BD09BF003DF05B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8766976019BD09BF003DF05B /* Bower UI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8766976219BD09BF003DF05B /* Bower UI */ = {
+			isa = PBXGroup;
+			children = (
+				8766976719BD09BF003DF05B /* AppDelegate.swift */,
+				8785392819D0230D0025B872 /* ArrayExtension.swift */,
+				87B12EDF19CDD92B00294C2B /* Project.swift */,
+				87DDD21819CE149800B07ABF /* ProjectView.swift */,
+				87DDD21419CE067100B07ABF /* ProjectTableCellView.swift */,
+				87B12EE119CDD94400294C2B /* Package.swift */,
+				8766976919BD09BF003DF05B /* Images.xcassets */,
+				8766976B19BD09BF003DF05B /* MainMenu.xib */,
+				8766976319BD09BF003DF05B /* Supporting Files */,
+			);
+			name = "Bower UI";
+			path = Bower;
+			sourceTree = "<group>";
+		};
+		8766976319BD09BF003DF05B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8766976419BD09BF003DF05B /* Info.plist */,
+				8766976519BD09BF003DF05B /* main.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8766977519BD09BF003DF05B /* BowerTests */ = {
+			isa = PBXGroup;
+			children = (
+				8766977819BD09BF003DF05B /* BowerTests.swift */,
+				8766977619BD09BF003DF05B /* Supporting Files */,
+			);
+			path = BowerTests;
+			sourceTree = "<group>";
+		};
+		8766977619BD09BF003DF05B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8766977719BD09BF003DF05B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8766975F19BD09BF003DF05B /* Bower UI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8766977C19BD09BF003DF05B /* Build configuration list for PBXNativeTarget "Bower UI" */;
+			buildPhases = (
+				8766975C19BD09BF003DF05B /* Sources */,
+				8766975D19BD09BF003DF05B /* Frameworks */,
+				8766975E19BD09BF003DF05B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bower UI";
+			productName = Bower;
+			productReference = 8766976019BD09BF003DF05B /* Bower UI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8766975819BD09BF003DF05B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = Enie;
+				TargetAttributes = {
+					8766975F19BD09BF003DF05B = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 8766975B19BD09BF003DF05B /* Build configuration list for PBXProject "Bower UI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8766975719BD09BF003DF05B;
+			productRefGroup = 8766976119BD09BF003DF05B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8766975F19BD09BF003DF05B /* Bower UI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8766975E19BD09BF003DF05B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87B017A619D15A6A001D05F1 /* MainMenu.xib in Resources */,
+				8766976A19BD09BF003DF05B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8766975C19BD09BF003DF05B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87B12EE219CDD94400294C2B /* Package.swift in Sources */,
+				87DDD21919CE149800B07ABF /* ProjectView.swift in Sources */,
+				8766976819BD09BF003DF05B /* AppDelegate.swift in Sources */,
+				8766976619BD09BF003DF05B /* main.swift in Sources */,
+				8785392919D0230D0025B872 /* ArrayExtension.swift in Sources */,
+				87B12EE019CDD92B00294C2B /* Project.swift in Sources */,
+				87DDD21519CE067100B07ABF /* ProjectTableCellView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8766976B19BD09BF003DF05B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8766976C19BD09BF003DF05B /* Base */,
+			);
+			name = MainMenu.xib;
+			path = "../Bower UI";
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8766977A19BD09BF003DF05B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8766977B19BD09BF003DF05B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		8766977D19BD09BF003DF05B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Bower UI/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "Bower UI";
+			};
+			name = Debug;
+		};
+		8766977E19BD09BF003DF05B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Bower UI/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "Bower UI";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8766975B19BD09BF003DF05B /* Build configuration list for PBXProject "Bower UI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8766977A19BD09BF003DF05B /* Debug */,
+				8766977B19BD09BF003DF05B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8766977C19BD09BF003DF05B /* Build configuration list for PBXNativeTarget "Bower UI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8766977D19BD09BF003DF05B /* Debug */,
+				8766977E19BD09BF003DF05B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8766975819BD09BF003DF05B /* Project object */;
+}
