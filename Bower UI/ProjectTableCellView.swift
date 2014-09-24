@@ -9,7 +9,7 @@
 import Cocoa
 
 class ProjectTableCellView: NSTableCellView {
-	@IBOutlet var label: NSTextField!;
+	@IBOutlet var label: NSTextField!
 	
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8764007A19D2F58A001B4C93 /* PackageTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764007919D2F58A001B4C93 /* PackageTableCellView.swift */; };
 		8766976619BD09BF003DF05B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8766976519BD09BF003DF05B /* main.swift */; };
 		8766976819BD09BF003DF05B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8766976719BD09BF003DF05B /* AppDelegate.swift */; };
 		8766976A19BD09BF003DF05B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8766976919BD09BF003DF05B /* Images.xcassets */; };
@@ -19,19 +20,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8764007919D2F58A001B4C93 /* PackageTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PackageTableCellView.swift; path = "Bower UI/PackageTableCellView.swift"; sourceTree = SOURCE_ROOT; };
 		8766976019BD09BF003DF05B /* Bower UI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bower UI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8766976419BD09BF003DF05B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Bower UI/Info.plist"; sourceTree = "<group>"; };
-		8766976519BD09BF003DF05B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = "../Bower UI/main.swift"; sourceTree = "<group>"; };
-		8766976719BD09BF003DF05B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../Bower UI/AppDelegate.swift"; sourceTree = "<group>"; };
-		8766976919BD09BF003DF05B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "../Bower UI/Images.xcassets"; sourceTree = "<group>"; };
+		8766976419BD09BF003DF05B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "Bower UI/Info.plist"; sourceTree = "<group>"; };
+		8766976519BD09BF003DF05B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = "Bower UI/main.swift"; sourceTree = "<group>"; };
+		8766976719BD09BF003DF05B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Bower UI/AppDelegate.swift"; sourceTree = "<group>"; };
+		8766976919BD09BF003DF05B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Bower UI/Images.xcassets"; sourceTree = "<group>"; };
 		8766976C19BD09BF003DF05B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		8766977719BD09BF003DF05B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8766977819BD09BF003DF05B /* BowerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowerTests.swift; sourceTree = "<group>"; };
-		8785392819D0230D0025B872 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = "../Bower UI/ArrayExtension.swift"; sourceTree = "<group>"; };
-		87B12EDF19CDD92B00294C2B /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Project.swift; path = "../Bower UI/Project.swift"; sourceTree = "<group>"; };
-		87B12EE119CDD94400294C2B /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = "../Bower UI/Package.swift"; sourceTree = "<group>"; };
-		87DDD21419CE067100B07ABF /* ProjectTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectTableCellView.swift; path = "../Bower UI/ProjectTableCellView.swift"; sourceTree = "<group>"; };
-		87DDD21819CE149800B07ABF /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectView.swift; path = "../Bower UI/ProjectView.swift"; sourceTree = "<group>"; };
+		8785392819D0230D0025B872 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = "Bower UI/ArrayExtension.swift"; sourceTree = "<group>"; };
+		87B12EDF19CDD92B00294C2B /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Project.swift; path = "Bower UI/Project.swift"; sourceTree = "<group>"; };
+		87B12EE119CDD94400294C2B /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = "Bower UI/Package.swift"; sourceTree = "<group>"; };
+		87DDD21419CE067100B07ABF /* ProjectTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectTableCellView.swift; path = "Bower UI/ProjectTableCellView.swift"; sourceTree = "<group>"; };
+		87DDD21819CE149800B07ABF /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectView.swift; path = "Bower UI/ProjectView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				8766976219BD09BF003DF05B /* Bower UI */,
-				8766977519BD09BF003DF05B /* BowerTests */,
 				8766976119BD09BF003DF05B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +70,7 @@
 				87DDD21819CE149800B07ABF /* ProjectView.swift */,
 				87DDD21419CE067100B07ABF /* ProjectTableCellView.swift */,
 				87B12EE119CDD94400294C2B /* Package.swift */,
+				8764007919D2F58A001B4C93 /* PackageTableCellView.swift */,
 				8766976919BD09BF003DF05B /* Images.xcassets */,
 				8766976B19BD09BF003DF05B /* MainMenu.xib */,
 				8766976319BD09BF003DF05B /* Supporting Files */,
@@ -84,23 +84,6 @@
 			children = (
 				8766976419BD09BF003DF05B /* Info.plist */,
 				8766976519BD09BF003DF05B /* main.swift */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8766977519BD09BF003DF05B /* BowerTests */ = {
-			isa = PBXGroup;
-			children = (
-				8766977819BD09BF003DF05B /* BowerTests.swift */,
-				8766977619BD09BF003DF05B /* Supporting Files */,
-			);
-			path = BowerTests;
-			sourceTree = "<group>";
-		};
-		8766977619BD09BF003DF05B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				8766977719BD09BF003DF05B /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -136,6 +119,11 @@
 				TargetAttributes = {
 					8766975F19BD09BF003DF05B = {
 						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -176,6 +164,7 @@
 			files = (
 				87B12EE219CDD94400294C2B /* Package.swift in Sources */,
 				87DDD21919CE149800B07ABF /* ProjectView.swift in Sources */,
+				8764007A19D2F58A001B4C93 /* PackageTableCellView.swift in Sources */,
 				8766976819BD09BF003DF05B /* AppDelegate.swift in Sources */,
 				8766976619BD09BF003DF05B /* main.swift in Sources */,
 				8785392919D0230D0025B872 /* ArrayExtension.swift in Sources */,
@@ -193,7 +182,7 @@
 				8766976C19BD09BF003DF05B /* Base */,
 			);
 			name = MainMenu.xib;
-			path = "../Bower UI";
+			path = "Bower UI";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

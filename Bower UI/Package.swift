@@ -12,5 +12,6 @@ class Package {
 	var name: String = ""
 	var version: String = ""
 	var description: String = ""
+	var updateAvailable: Bool = false
 	
 }
