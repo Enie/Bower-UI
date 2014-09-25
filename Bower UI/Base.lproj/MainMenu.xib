@@ -10,6 +10,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Bower_UI" customModuleProvider="target">
             <connections>
+                <outlet property="packagesSearchField" destination="3xF-1j-r5m" id="Qll-qp-rrm"/>
                 <outlet property="packagesTableView" destination="NJ1-hY-C2x" id="O4o-U1-l93"/>
                 <outlet property="projectView" destination="qLY-te-hZl" id="SCi-vQ-Zub"/>
                 <outlet property="projectsTableView" destination="IDm-Hr-Ifh" id="5oA-N8-lDX"/>
@@ -815,6 +816,10 @@
                                 <buttonCell key="cell" type="roundRect" title="save" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DoF-Y1-r0C">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="saveProject:" target="Voe-Tx-rLC" id="0yY-T4-eb9"/>
@@ -822,22 +827,14 @@
                             </button>
                             <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zms-US-0Vs">
                                 <rect key="frame" x="306" y="19" width="68" height="19"/>
-                                <buttonCell key="cell" type="roundRect" title="revert" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hu8-I6-z4S">
+                                <buttonCell key="cell" type="roundRect" title="reload" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hu8-I6-z4S">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
+                                    <string key="keyEquivalent">r</string>
+                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="revertProject:" target="Voe-Tx-rLC" id="VjF-Z9-Czh"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Afc-dj-pbb">
-                                <rect key="frame" x="230" y="19" width="68" height="19"/>
-                                <buttonCell key="cell" type="roundRect" title="refresh" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zzf-cT-Fwe">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="refreshProject:" target="Voe-Tx-rLC" id="nep-Zm-He4"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vTp-Xh-AsY">
@@ -845,6 +842,10 @@
                                 <buttonCell key="cell" type="roundRect" title="delete" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zv8-9M-fUp">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="deleteProject:" target="Voe-Tx-rLC" id="X08-1P-9Ll"/>
@@ -985,11 +986,14 @@
                             </scrollView>
                             <searchField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3xF-1j-r5m">
                                 <rect key="frame" x="12" y="202" width="438" height="22"/>
-                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="search for new packages" usesSingleLineMode="YES" bezelStyle="round" id="ezY-S5-oJ6">
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="search for new packages to add" usesSingleLineMode="YES" bezelStyle="round" sendsWholeSearchString="YES" id="ezY-S5-oJ6">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </searchFieldCell>
+                                <connections>
+                                    <action selector="searchPackages:" target="Voe-Tx-rLC" id="0jb-Jb-D3W"/>
+                                </connections>
                             </searchField>
                         </subviews>
                         <constraints>
@@ -1012,10 +1016,8 @@
                             <constraint firstAttribute="trailing" secondItem="y8Y-Mj-AIK" secondAttribute="trailing" constant="20" id="gIn-PN-PWw"/>
                             <constraint firstAttribute="trailing" secondItem="cji-vq-xiO" secondAttribute="trailing" id="njB-Ld-l1R"/>
                             <constraint firstItem="DM9-Om-j17" firstAttribute="leading" secondItem="tA8-9Q-7zB" secondAttribute="trailing" constant="12" id="rIn-YJ-Mpa"/>
-                            <constraint firstAttribute="bottom" secondItem="Afc-dj-pbb" secondAttribute="bottom" constant="20" id="tNy-7W-egH"/>
                             <constraint firstAttribute="bottom" secondItem="vTp-Xh-AsY" secondAttribute="bottom" constant="20" id="tg5-yc-Sad"/>
                             <constraint firstAttribute="bottom" secondItem="zms-US-0Vs" secondAttribute="bottom" constant="20" id="tuP-ch-qmx"/>
-                            <constraint firstItem="zms-US-0Vs" firstAttribute="leading" secondItem="Afc-dj-pbb" secondAttribute="trailing" constant="8" id="vB6-oB-Lge"/>
                         </constraints>
                         <connections>
                             <outlet property="authorsTextField" destination="3cB-dh-jMn" id="PtX-3g-qYa"/>

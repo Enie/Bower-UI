@@ -16,11 +16,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 	@IBOutlet weak var projectView: ProjectView!
 	
 	@IBOutlet weak var packagesTableView: NSTableView!
+	@IBOutlet weak var packagesSearchField: NSSearchField!
 	
 	let windowBackgroundColor = NSColor(calibratedRed:0.99, green:0.8, blue:0.25, alpha:1.0)
 	let projectsTableTextColor = NSColor(calibratedRed: 0.33, green: 0.22, blue: 0.16, alpha: 1.0)
 	let selectedBackgroundColor = NSColor(calibratedRed: 0.33, green: 0.22, blue: 0.16, alpha: 1.0)
-	
 	
 	var projectPaths : NSMutableOrderedSet {
 		get {
@@ -46,6 +46,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 	
 	var projects: [Project] = []
 	var packages: [Package] = []
+	
+	var isSearchingForPackages = false
 
 	
 	/**************************************************************************
@@ -303,7 +305,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 	}
 	
 	func listPackages() {
-		dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+		isSearchingForPackages = false
+		
+		dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
 			let pipe = NSPipe()
 			
 			let task = NSTask()
@@ -334,7 +338,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 			task.waitUntilExit()
 			
 			self.packages.removeAll(keepCapacity: true)
-			
 			var rows = outString.componentsSeparatedByString("\n")
 			rows.removeAtIndex(0)
 			if rows.count > 1
@@ -355,6 +358,82 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 				}
 			}
 			
+			println("reload packages")
+			
+			dispatch_async(dispatch_get_main_queue()) {
+				self.packagesTableView.reloadData()
+			}
+		}
+	}
+	
+	@IBAction func searchPackages(sender: AnyObject?)
+	{
+		isSearchingForPackages = true
+		
+		dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+			let pipe = NSPipe()
+			
+			let task = NSTask()
+			task.launchPath = "/usr/local/bin/node"
+			task.currentDirectoryPath = (self.currentProject != nil) ? self.currentProject!.path : ""
+			task.arguments = ["/usr/local/bin/bower", "search", self.packagesSearchField.stringValue]
+			task.standardOutput = pipe
+			
+			println("search for \(self.packagesSearchField.stringValue)")
+			
+			if self.packagesSearchField.stringValue == ""
+			{
+				self.listPackages()
+				return
+			}
+			
+			var outString: String = ""
+			pipe.fileHandleForReading.readInBackgroundAndNotify()
+			
+			NSNotificationCenter.defaultCenter().addObserverForName(
+				NSFileHandleReadCompletionNotification,
+				object: pipe.fileHandleForReading,
+				queue: nil,
+				usingBlock:
+				{ (note: NSNotification!) -> Void in
+					var outData: NSData = pipe.fileHandleForReading.availableData
+					outString += NSString(data: outData, encoding: NSUTF8StringEncoding)!
+					print(outString)
+					//if outString != ""
+					//{
+						pipe.fileHandleForReading.readInBackgroundAndNotify()
+					//}
+			})
+			
+			task.launch()
+			task.waitUntilExit()
+			
+			
+			self.packages.removeAll(keepCapacity: true)
+			var rows = outString.componentsSeparatedByString("\n")
+			if rows[0] == "No results." || rows.count < 2
+			{
+				//TODO: somehow show there was no result
+				self.packages.removeAll(keepCapacity: true)
+			}
+			else
+			{
+				rows.removeRange(0...1)
+				if rows.count > 1
+				{
+					rows.removeLast()
+					
+					for row in rows
+					{
+						var tokens = row.componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString: " "))
+						tokens.removeLast()
+						let newPackage = Package()
+						newPackage.name = tokens.last!
+						newPackage.version = ""
+						self.packages += [newPackage]
+					}
+				}
+			}
 			println("reload packages")
 			
 			dispatch_async(dispatch_get_main_queue()) {
@@ -403,16 +482,37 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 				result.versionLabel?.stringValue = packages[row].version
 				result.descriptionLabel?.stringValue = packages[row].description
 				
+				if isSearchingForPackages
+				{
+					result.versionLabel.hidden = true
+				}
+				else
+				{
+					result.versionLabel.hidden = false
+				}
+				
 				return result
 			}
 			else if tableColumn.identifier == "homeColumn"
 			{
+				if isSearchingForPackages
+				{
+					return nil
+				}
 				var result: NSTableCellView = tableView.makeViewWithIdentifier("homeTableView", owner: self) as NSTableCellView
 				return result
 			}
 			else// if tableColumn.identifier == "updateColumn"
 			{
 				var result: NSTableCellView = tableView.makeViewWithIdentifier("updateTableView", owner: self) as NSTableCellView
+				if isSearchingForPackages
+				{
+					result.imageView.image = NSImage(named: NSImageNameAddTemplate)
+				}
+				else
+				{
+					result.imageView.image = NSImage(named: NSImageNameRefreshTemplate)
+				}
 				return result
 			}
 		}
@@ -506,33 +606,5 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
