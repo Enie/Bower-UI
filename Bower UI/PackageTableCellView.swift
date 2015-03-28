@@ -12,4 +12,5 @@ class PackageTableCellView: NSTableCellView {
 	@IBOutlet var nameLabel: NSTextField!
 	@IBOutlet var descriptionLabel: NSTextField!
 	@IBOutlet var versionLabel: NSTextField!
+	@IBOutlet var installButton: NSButton!
 }

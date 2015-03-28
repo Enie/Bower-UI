@@ -68,8 +68,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 
 	func applicationWillFinishLaunching(notification: NSNotification!) {
 		
-		//self.window.backgroundColor = windowBackgroundColor
-		
+        self.window.titlebarAppearsTransparent = true
+        self.window.titleVisibility = .Hidden
+        
 		projectView.delegate = self
 		projectQuery.delegate = self
 		
@@ -98,6 +99,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 	}
 	
 	/**************************************************************************
+	// TODO: Project handling mark
 	// MARK - Project handling
 	**************************************************************************/
 
@@ -113,7 +115,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 		
 		if panel.runModal() == NSOKButton
 		{
-			var selectedFolder: String? = panel.URL.path
+			var selectedFolder: String? = panel.URL!.path
 			if let folderPath = selectedFolder
 			{
 				var newProject = readProject(folderPath)
@@ -289,15 +291,82 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 	}
 	
 	/**************************************************************************
+	// TODO: Package handling mark
 	// MARK - Package handling
 	**************************************************************************/
 	
 	@IBAction func addPackage(sender: AnyObject?) {
-		
+		dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+			let pipe = NSPipe()
+			
+			let newPackage = (self.packagesTableView.viewAtColumn(0, row: self.packagesTableView.selectedRow, makeIfNecessary: true) as PackageTableCellView).nameLabel.stringValue
+			
+			let task = NSTask()
+			task.launchPath = "/usr/local/bin/node"
+			task.currentDirectoryPath = (self.currentProject != nil) ? self.currentProject!.path : ""
+			task.arguments = ["/usr/local/bin/bower", "install", newPackage]
+			task.standardOutput = pipe
+			
+			println("install \(newPackage)")
+			
+			/*var outString: String = ""
+			pipe.fileHandleForReading.readInBackgroundAndNotify()
+			
+			NSNotificationCenter.defaultCenter().addObserverForName(
+				NSFileHandleReadCompletionNotification,
+				object: pipe.fileHandleForReading,
+				queue: nil,
+				usingBlock:
+				{ (note: NSNotification!) -> Void in
+					var outData: NSData = pipe.fileHandleForReading.availableData
+					outString += NSString(data: outData, encoding: NSUTF8StringEncoding)!
+					print(outString)
+					//if outString != ""
+					//{
+					pipe.fileHandleForReading.readInBackgroundAndNotify()
+					//}
+			})*/
+			
+			task.launch()
+			task.waitUntilExit()
+		}
 	}
 	
 	@IBAction func removePackage(sender: AnyObject?) {
-		
+		dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+			let pipe = NSPipe()
+			
+			let oldPackage = (self.packagesTableView.viewAtColumn(0, row: self.packagesTableView.selectedRow, makeIfNecessary: true) as PackageTableCellView).nameLabel.stringValue
+			
+			let task = NSTask()
+			task.launchPath = "/usr/local/bin/node"
+			task.currentDirectoryPath = (self.currentProject != nil) ? self.currentProject!.path : ""
+			task.arguments = ["/usr/local/bin/bower", "uninstall", oldPackage ]
+			/*task.standardOutput = pipe
+			
+			var outString: String = ""
+			pipe.fileHandleForReading.readInBackgroundAndNotify()
+			
+			NSNotificationCenter.defaultCenter().addObserverForName(
+				NSFileHandleReadCompletionNotification,
+				object: pipe.fileHandleForReading,
+				queue: nil,
+				usingBlock:
+				{ (note: NSNotification!) -> Void in
+					var outData: NSData = pipe.fileHandleForReading.availableData
+					outString += NSString(data: outData, encoding: NSUTF8StringEncoding)!
+					print(outString)
+					if outString != ""
+					{
+						pipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
+					}
+			})*/
+			
+			task.launch()
+			task.waitUntilExit()
+			
+			self.listPackages()
+		}
 	}
 	
 	@IBAction func updatePackage(sender: AnyObject?) {
@@ -307,6 +376,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 	func listPackages() {
 		isSearchingForPackages = false
 		
+        //TODO: check if node and bower are installed
 		dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
 			let pipe = NSPipe()
 			
@@ -337,16 +407,27 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 			task.launch()
 			task.waitUntilExit()
 			
+			var error: NSError = NSError()
+			var regex: NSRegularExpression = NSRegularExpression(pattern: "\\s[\\x00-\\x7F^#]*#", options: NSRegularExpressionOptions.CaseInsensitive, error: nil)!
+			
 			self.packages.removeAll(keepCapacity: true)
 			var rows = outString.componentsSeparatedByString("\n")
-			rows.removeAtIndex(0)
-			if rows.count > 1
+			
+			println(rows)
+			
+			for row in rows
 			{
-				rows.removeLast()
+				let rowLength = (NSString(string: row).length)
+				var checkingResult = regex.matchesInString(row, options: nil, range: NSMakeRange(0, rowLength))
 				
-				for row in rows
+				if checkingResult.count > 0
 				{
-					var tokens = row.componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString: "# "))
+					let range = (checkingResult[0] as NSTextCheckingResult).range
+					let strippedString = NSString(string: row).substringFromIndex(range.location)
+					
+					println(strippedString)
+					
+					var tokens = strippedString.componentsSeparatedByCharactersInSet(NSCharacterSet(charactersInString: "# "))
 					let newPackage = Package()
 					newPackage.name = tokens[1]
 					newPackage.version = tokens[2]
@@ -418,7 +499,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 			}
 			else
 			{
-				rows.removeRange(0...1)
+				rows.removeAtIndex(0)
 				if rows.count > 1
 				{
 					rows.removeLast()
@@ -443,6 +524,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 	}
 	
 	/**************************************************************************
+	// TODO: UITableViewSource and Delegate mark
 	// MARK - UITableViewSource and Delegate
 	**************************************************************************/
 	
@@ -485,10 +567,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 				if isSearchingForPackages
 				{
 					result.versionLabel.hidden = true
+					result.installButton.hidden = false
 				}
 				else
 				{
 					result.versionLabel.hidden = false
+					result.installButton.hidden = true
 				}
 				
 				return result
@@ -504,15 +588,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 			}
 			else// if tableColumn.identifier == "updateColumn"
 			{
-				var result: NSTableCellView = tableView.makeViewWithIdentifier("updateTableView", owner: self) as NSTableCellView
 				if isSearchingForPackages
 				{
-					result.imageView.image = NSImage(named: NSImageNameAddTemplate)
+					return nil
 				}
-				else
-				{
-					result.imageView.image = NSImage(named: NSImageNameRefreshTemplate)
-				}
+				var result: NSTableCellView = tableView.makeViewWithIdentifier("updateTableView", owner: self) as NSTableCellView
+
 				return result
 			}
 		}

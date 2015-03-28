@@ -18,10 +18,10 @@ class ProjectView: NSView {
 	var delegate: AppDelegate!
 	var project: Project?{
 		didSet {
-			nameTextField.stringValue = self.project?.name
-			authorsTextField.stringValue = self.project?.authors.combine(", ")
-			descriptionTextField.stringValue = self.project?.description
-			versionTextField.stringValue = self.project?.version
+			nameTextField.stringValue = self.project!.name
+			authorsTextField.stringValue = self.project!.authors.combine(", ")
+			descriptionTextField.stringValue = self.project!.description
+			versionTextField.stringValue = self.project!.version
 		}
 	}
 	

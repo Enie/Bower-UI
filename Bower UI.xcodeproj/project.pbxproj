@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		870C1DB11AC7051800166F35 /* ColoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C1DB01AC7051800166F35 /* ColoredView.swift */; };
 		8764007A19D2F58A001B4C93 /* PackageTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764007919D2F58A001B4C93 /* PackageTableCellView.swift */; };
 		8766976619BD09BF003DF05B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8766976519BD09BF003DF05B /* main.swift */; };
 		8766976819BD09BF003DF05B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8766976719BD09BF003DF05B /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		870C1DB01AC7051800166F35 /* ColoredView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredView.swift; sourceTree = "<group>"; };
 		8764007919D2F58A001B4C93 /* PackageTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PackageTableCellView.swift; path = "Bower UI/PackageTableCellView.swift"; sourceTree = SOURCE_ROOT; };
 		8766976019BD09BF003DF05B /* Bower UI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bower UI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8766976419BD09BF003DF05B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				8766976719BD09BF003DF05B /* AppDelegate.swift */,
 				8785392819D0230D0025B872 /* ArrayExtension.swift */,
+				870C1DB01AC7051800166F35 /* ColoredView.swift */,
 				87B12EDF19CDD92B00294C2B /* Project.swift */,
 				87DDD21819CE149800B07ABF /* ProjectView.swift */,
 				87DDD21419CE067100B07ABF /* ProjectTableCellView.swift */,
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87B12EE219CDD94400294C2B /* Package.swift in Sources */,
+				870C1DB11AC7051800166F35 /* ColoredView.swift in Sources */,
 				87DDD21919CE149800B07ABF /* ProjectView.swift in Sources */,
 				8764007A19D2F58A001B4C93 /* PackageTableCellView.swift in Sources */,
 				8766976819BD09BF003DF05B /* AppDelegate.swift in Sources */,
@@ -270,6 +274,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Bower UI/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "Bower UI";
 			};
 			name = Debug;
@@ -281,6 +286,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Bower UI/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "Bower UI";
 			};
 			name = Release;
