@@ -7,10 +7,10 @@ body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  color: #606c71; }
+  color: #714302; }
 
 a {
-  color: #1e6bb8;
+  color: #99551d;
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
@@ -56,8 +56,8 @@ a {
 .page-header {
   color: #fff;
   text-align: center;
-  background-color: #159957;
-  background-image: linear-gradient(120deg, #155799, #159957); }
+  background-color: #99551d;
+  background-image: linear-gradient(120deg, #99551d, #998a0e); }
 
 @media screen and (min-width: 64em) {
   .page-header {
@@ -112,7 +112,7 @@ a {
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-weight: normal;
-  color: #159957; }
+  color: #99551d; }
 .main-content p {
   margin-bottom: 1em; }
 .main-content code {
@@ -169,7 +169,7 @@ a {
 .main-content blockquote {
   padding: 0 1rem;
   margin-left: 0;
-  color: #819198;
+  color: #c68704;
   border-left: 0.3rem solid #dce6f0; }
   .main-content blockquote > :first-child {
     margin-top: 0; }
@@ -230,7 +230,7 @@ a {
   font-weight: bold; }
 
 .site-footer-credits {
-  color: #819198; }
+  color: #c68704; }
 
 @media screen and (min-width: 64em) {
   .site-footer {
