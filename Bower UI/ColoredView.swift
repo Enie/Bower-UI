@@ -8,16 +8,10 @@
 
 import Cocoa
 
+@IBDesignable
 class ColoredView: NSView {
 
-    var backgroundColor: NSColor
-    
-    override init()
-    {
-        backgroundColor = NSColor(calibratedRed:0.99, green:0.8, blue:0.25, alpha:1.0)
-        
-        super.init()
-    }
+    @IBInspectable var backgroundColor: NSColor
     
     convenience init(color: NSColor)
     {
@@ -36,7 +30,7 @@ class ColoredView: NSView {
         
         backgroundColor = NSColor(calibratedRed:0.99, green:0.8, blue:0.25, alpha:1.0)
         
-        super.init()
+        super.init(coder: coder)
     }
     
     override func drawRect(dirtyRect: NSRect) {

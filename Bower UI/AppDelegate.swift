@@ -66,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 		)
 	}
 
-	func applicationWillFinishLaunching(notification: NSNotification!) {
+	func applicationWillFinishLaunching(notification: NSNotification) {
 		
         self.window.titlebarAppearsTransparent = true
         self.window.titleVisibility = .Hidden
@@ -74,7 +74,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 		projectView.delegate = self
 		projectQuery.delegate = self
 		
-		for path in projectPaths.array as [String]
+		for path in projectPaths.array as! [String]
 		{
 			let project = readProject(path)
 			if project != nil
@@ -86,12 +86,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 		projectsTableView.reloadData()
 	}
 	
-	func applicationDidFinishLaunching(aNotification: NSNotification?) {
+	func applicationDidFinishLaunching(aNotification: NSNotification) {
 		// Insert code here to initialize your application
 		
 	}
 
-	func applicationWillTerminate(aNotification: NSNotification?) {
+	func applicationWillTerminate(aNotification: NSNotification) {
 		// Insert code here to tear down your application
 		
 		let notificationCenter = NSNotificationCenter.defaultCenter()
@@ -113,7 +113,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 		panel.showsToolbarButton = true
 		
 		
-		if panel.runModal() == NSOKButton
+		if panel.runModal() == NSFileHandlingPanelOKButton
 		{
 			var selectedFolder: String? = panel.URL!.path
 			if let folderPath = selectedFolder
@@ -233,18 +233,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 		
 		if let data = content
 		{
-			var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+			var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
 			
 			let project = Project()
 			project.path = fromPath
-			project.name = jsonResult.valueForKey("name") as String
-			project.authors = jsonResult.valueForKey("authors") as [String]
-			project.version = jsonResult.valueForKey("version") as String
-			project.license = jsonResult.valueForKey("license") as String
+			project.name = jsonResult.valueForKey("name") as! String
+			project.authors = jsonResult.valueForKey("authors") as! [String]
+			project.version = jsonResult.valueForKey("version") as! String
+			project.license = jsonResult.valueForKey("license") as! String
 			if jsonResult.valueForKey("keywords") != nil
-				{ project.keywords = jsonResult.valueForKey("keywords") as [String] }
+				{ project.keywords = jsonResult.valueForKey("keywords") as! [String] }
 			if jsonResult.valueForKey("description") != nil
-				{ project.description = jsonResult.valueForKey("description") as String }
+				{ project.description = jsonResult.valueForKey("description") as! String }
 			
 			return project
 		}
@@ -259,7 +259,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 		
 		if let data = content
 		{
-			var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+			var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
 			
 			jsonResult.setValue(project.name, forKey: "name")
 			if project.authors.count != 0
@@ -299,7 +299,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 		dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
 			let pipe = NSPipe()
 			
-			let newPackage = (self.packagesTableView.viewAtColumn(0, row: self.packagesTableView.selectedRow, makeIfNecessary: true) as PackageTableCellView).nameLabel.stringValue
+			let newPackage = (self.packagesTableView.viewAtColumn(0, row: self.packagesTableView.selectedRow, makeIfNecessary: true) as! PackageTableCellView).nameLabel.stringValue
 			
 			let task = NSTask()
 			task.launchPath = "/usr/local/bin/node"
@@ -336,7 +336,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 		dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
 			let pipe = NSPipe()
 			
-			let oldPackage = (self.packagesTableView.viewAtColumn(0, row: self.packagesTableView.selectedRow, makeIfNecessary: true) as PackageTableCellView).nameLabel.stringValue
+			let oldPackage = (self.packagesTableView.viewAtColumn(0, row: self.packagesTableView.selectedRow, makeIfNecessary: true) as! PackageTableCellView).nameLabel.stringValue
 			
 			let task = NSTask()
 			task.launchPath = "/usr/local/bin/node"
@@ -396,7 +396,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 				usingBlock:
 				{ (note: NSNotification!) -> Void in
 					var outData: NSData = pipe.fileHandleForReading.availableData
-					outString += NSString(data: outData, encoding: NSUTF8StringEncoding)!
+					outString += NSString(data: outData, encoding: NSUTF8StringEncoding)! as! String
 					print(outString)
 					if outString != ""
 					{
@@ -422,7 +422,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 				
 				if checkingResult.count > 0
 				{
-					let range = (checkingResult[0] as NSTextCheckingResult).range
+					let range = (checkingResult[0] as! NSTextCheckingResult).range
 					let strippedString = NSString(string: row).substringFromIndex(range.location)
 					
 					println(strippedString)
@@ -478,7 +478,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 				usingBlock:
 				{ (note: NSNotification!) -> Void in
 					var outData: NSData = pipe.fileHandleForReading.availableData
-					outString += NSString(data: outData, encoding: NSUTF8StringEncoding)!
+					outString += NSString(data: outData, encoding: NSUTF8StringEncoding)! as String
 					print(outString)
 					//if outString != ""
 					//{
@@ -528,7 +528,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 	// MARK - UITableViewSource and Delegate
 	**************************************************************************/
 	
-	func numberOfRowsInTableView(tableView: NSTableView!) -> Int {
+	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
 		if tableView == projectsTableView
 		{
 			return projects.count
@@ -541,10 +541,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 		return 0
 	}
 	
-	func tableView(tableView: NSTableView!, viewForTableColumn tableColumn: NSTableColumn!, row: Int) -> NSView! {
+    
+	func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 		if tableView == projectsTableView
 		{
-			var result: ProjectTableCellView = tableView.makeViewWithIdentifier("projectTableView", owner: self) as ProjectTableCellView
+			var result: ProjectTableCellView = tableView.makeViewWithIdentifier("projectTableView", owner: self) as! ProjectTableCellView
 
 			result.label?.stringValue = projects[row].name
 			
@@ -557,9 +558,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 		}
 		else
 		{
-			if tableColumn.identifier == "infoColumn"
+			if tableColumn?.identifier == "infoColumn"
 			{
-				var result: PackageTableCellView = tableView.makeViewWithIdentifier("packageTableView", owner: self) as PackageTableCellView
+				var result: PackageTableCellView = tableView.makeViewWithIdentifier("packageTableView", owner: self) as! PackageTableCellView
 				result.nameLabel?.stringValue = packages[row].name
 				result.versionLabel?.stringValue = packages[row].version
 				result.descriptionLabel?.stringValue = packages[row].description
@@ -577,13 +578,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 				
 				return result
 			}
-			else if tableColumn.identifier == "homeColumn"
+			else if tableColumn?.identifier == "homeColumn"
 			{
 				if isSearchingForPackages
 				{
 					return nil
 				}
-				var result: NSTableCellView = tableView.makeViewWithIdentifier("homeTableView", owner: self) as NSTableCellView
+				var result: NSTableCellView = tableView.makeViewWithIdentifier("homeTableView", owner: self) as! NSTableCellView
 				return result
 			}
 			else// if tableColumn.identifier == "updateColumn"
@@ -592,36 +593,36 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 				{
 					return nil
 				}
-				var result: NSTableCellView = tableView.makeViewWithIdentifier("updateTableView", owner: self) as NSTableCellView
+				var result: NSTableCellView = tableView.makeViewWithIdentifier("updateTableView", owner: self) as! NSTableCellView
 
 				return result
 			}
 		}
 	}
 	
-	func tableView(tableView: NSTableView!, rowViewForRow row: Int) -> NSTableRowView! {
+	func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
 		return ProjectTableRowView()
 	}
 	
-	func tableViewSelectionDidChange(notification: NSNotification!) {
+	func tableViewSelectionDidChange(notification: NSNotification) {
 		
-		if notification.object as NSTableView == projectsTableView
+		if notification.object as! NSTableView == projectsTableView
 		{
 			for var i = 0; i < projectsTableView.numberOfRows; i++
 			{
-				(projectsTableView.viewAtColumn(0, row: i, makeIfNecessary: true) as ProjectTableCellView).label.textColor = projectsTableTextColor
+				(projectsTableView.viewAtColumn(0, row: i, makeIfNecessary: true) as! ProjectTableCellView).label.textColor = projectsTableTextColor
 			}
 			
 			for var i = 0; i < packagesTableView.numberOfRows; i++
 			{
-				(packagesTableView.viewAtColumn(0, row: i, makeIfNecessary: true) as PackageTableCellView).nameLabel.textColor = projectsTableTextColor
+				(packagesTableView.viewAtColumn(0, row: i, makeIfNecessary: true) as! PackageTableCellView).nameLabel.textColor = projectsTableTextColor
 			}
 			
 			if(projectsTableView.selectedRow != -1)
 			{
 				projectView.project = projects[projectsTableView.selectedRow]
 				
-				(projectsTableView.viewAtColumn(0, row: projectsTableView.selectedRow, makeIfNecessary: true) as ProjectTableCellView).label.textColor = NSColor.whiteColor()
+				(projectsTableView.viewAtColumn(0, row: projectsTableView.selectedRow, makeIfNecessary: true) as! ProjectTableCellView).label.textColor = NSColor.whiteColor()
 				currentProject = projectView.project
 				listPackages()
 			}
@@ -631,39 +632,39 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 			}
 		}
 		
-		if notification.object as NSTableView == packagesTableView
+		if let table = notification.object as? NSTableView where table == packagesTableView
 		{
 			for var i = 0; i < packagesTableView.numberOfRows; i++
 			{
-				(packagesTableView.viewAtColumn(0, row: i, makeIfNecessary: true) as PackageTableCellView).nameLabel.textColor = projectsTableTextColor
+				(packagesTableView.viewAtColumn(0, row: i, makeIfNecessary: true) as! PackageTableCellView).nameLabel.textColor = projectsTableTextColor
 			}
 			
 			if(packagesTableView.selectedRow != -1)
 			{
-				(packagesTableView.viewAtColumn(0, row: packagesTableView.selectedRow, makeIfNecessary: true) as PackageTableCellView).nameLabel.textColor = NSColor.whiteColor()
+				(packagesTableView.viewAtColumn(0, row: packagesTableView.selectedRow, makeIfNecessary: true) as! PackageTableCellView).nameLabel.textColor = NSColor.whiteColor()
 			}
 		}
 	}
 	
-	func tableViewSelectionIsChanging(notification: NSNotification!) {
+	func tableViewSelectionIsChanging(notification: NSNotification) {
 		
-		if notification.object as NSTableView == projectsTableView
+		if notification.object as! NSTableView == projectsTableView
 		{
 			for var i = 0; i < projectsTableView.numberOfRows; i++
 			{
-				(projectsTableView.viewAtColumn(0, row: i, makeIfNecessary: true) as ProjectTableCellView).label.textColor = projectsTableTextColor
+				(projectsTableView.viewAtColumn(0, row: i, makeIfNecessary: true) as! ProjectTableCellView).label.textColor = projectsTableTextColor
 			}
 			
 			for var i = 0; i < packagesTableView.numberOfRows; i++
 			{
-				(packagesTableView.viewAtColumn(0, row: i, makeIfNecessary: true) as PackageTableCellView).nameLabel.textColor = projectsTableTextColor
+				(packagesTableView.viewAtColumn(0, row: i, makeIfNecessary: true) as! PackageTableCellView).nameLabel.textColor = projectsTableTextColor
 			}
 			
 			if(projectsTableView.selectedRow != -1)
 			{
 				projectView.project = projects[projectsTableView.selectedRow]
 				
-				(projectsTableView.viewAtColumn(0, row: projectsTableView.selectedRow, makeIfNecessary: true) as ProjectTableCellView).label.textColor = NSColor.whiteColor()
+				(projectsTableView.viewAtColumn(0, row: projectsTableView.selectedRow, makeIfNecessary: true) as! ProjectTableCellView).label.textColor = NSColor.whiteColor()
 				currentProject = projectView.project
 				listPackages()
 			}
@@ -673,16 +674,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 			}
 		}
 		
-		if notification.object as NSTableView == packagesTableView
+		if notification.object as! NSTableView == packagesTableView
 		{
 			for var i = 0; i < packagesTableView.numberOfRows; i++
 			{
-				(packagesTableView.viewAtColumn(0, row: i, makeIfNecessary: true) as PackageTableCellView).nameLabel.textColor = projectsTableTextColor
+				(packagesTableView.viewAtColumn(0, row: i, makeIfNecessary: true) as! PackageTableCellView).nameLabel.textColor = projectsTableTextColor
 			}
 			
 			if(packagesTableView.selectedRow != -1)
 			{	
-				(packagesTableView.viewAtColumn(0, row: packagesTableView.selectedRow, makeIfNecessary: true) as PackageTableCellView).nameLabel.textColor = NSColor.whiteColor()
+				(packagesTableView.viewAtColumn(0, row: packagesTableView.selectedRow, makeIfNecessary: true) as! PackageTableCellView).nameLabel.textColor = NSColor.whiteColor()
 			}
 		}
 	}
